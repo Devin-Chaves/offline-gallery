@@ -11,17 +11,33 @@
 </template>
 
 <script>
-import Card from './components/Card';
-
+import cloudinary from 'cloudinary-core';
 import data from './db.json';
-
+import Card from './components/Card';
 export default {
   name: 'app',
   data() {
-    return { collections: [] };
+    return {
+      cloudinary: null,
+      collections: []
+    };
   },
   created() {
+    this.cloudinary = cloudinary.Cloudinary.new({
+      cloud_name: 'bigdevo'
+    });
     this.collections = data.map(this.transform);
+  },
+  methods: {
+    transform(collection) {
+      const imageUrl = this.cloudinary.url(collection.imageId, {
+        width: 300,
+        crop: 'fit',
+        quality: 'auto',
+        secure: true
+      });
+      return Object.assign(collection, { imageUrl });
+    }
   },
   components: {
     Card
