@@ -27,7 +27,7 @@ export default {
   },
   created() {
     this.cloudinary = cloudinary.Cloudinary.new({
-      cloud_name: 'bigdevo'
+      cloud_name: 'christekh'
     });
     this.collections = data.map(this.transform);
   },
