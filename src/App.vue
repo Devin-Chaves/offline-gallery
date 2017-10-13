@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <header>
-      <span>Vue.js PWA</span>
+      <span>Offline Masonary Gallery</span>
     </header>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <card></card>
+      <div class="wrapper">
+        <div class="cards">
+          <card v-for="collection in collections" :key="collection.imageId" :collection="collection"></card>
+        </div>
+      </div>
     </main>
   </div>
 </template>
