@@ -9,7 +9,10 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['collection'],
+  name: 'card'
+};
 </script>
 
 <style lang="css">
