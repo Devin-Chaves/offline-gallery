@@ -13,8 +13,16 @@
 <script>
 import Card from './components/Card';
 
+import data from './db.json';
+
 export default {
   name: 'app',
+  data() {
+    return { collections: [] };
+  },
+  created() {
+    this.collections = data.map(this.transform);
+  },
   components: {
     Card
   }
